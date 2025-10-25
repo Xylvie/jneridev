@@ -53,7 +53,7 @@ Here are some of the projects featured on this site:
 If you'd like to collaborate or get in touch, feel free to reach out!
 
 **Email:** thejoker121001@gmail.com  
-**Portfolio:** [https://xylvie.github.io/latest-portfolio/](https://xylvie.github.io/latest-portfolio/)  
+**Portfolio:** [https://xylvie.github.io/latest-portfolio/](https://xylvie.github.io/jneridev/)   
 **GitHub:** [https://github.com/xylvie](https://github.com/xylvie)
 
 ---
