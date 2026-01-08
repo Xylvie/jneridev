@@ -6,42 +6,70 @@
     <title>Joshua Portfolio</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-</head>
-<body>
 
-    <div class="min-h-screen bg-gray-100 flex flex-col">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root{--accent:#0f172a; --accent-2:#0ea5e9}
+        html,body{font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#e6f0ff}
+        .fade-up{opacity:0;transform:translateY(18px) scale(.98);transition:opacity .75s cubic-bezier(.2,.9,.2,1),transform .75s cubic-bezier(.2,.9,.2,1)}
+        .fade-up.in-view{opacity:1;transform:translateY(0) scale(1)}
+        .hero-bg{position:absolute;inset:0;z-index:-1;opacity:.28;background:radial-gradient(700px 350px at 10% 20%,#0f172a,transparent 35%), radial-gradient(500px 250px at 90% 80%,var(--accent-2),transparent 25%), linear-gradient(180deg,rgba(2,6,23,0.9),rgba(7,10,40,0.75))}
+        .glass-card{background:rgba(6,10,23,0.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.05)}
+        .float-anim{animation:float 6s ease-in-out infinite}
+        @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="min-h-screen bg-gradient-to-b from-slate-900 via-indigo-900 to-blue-900 text-slate-100 flex flex-col">
+        <div class="hero-bg" aria-hidden="true"></div> 
         <!-- Header Section -->
-        <header class="bg-white shadow sticky top-0 z-50">
-            <div class="container mx-auto px-4 py-6 flex justify-between items-center">
-                <div id="logo" class="flex items-center space-x-2 h-10">
+        <header class="bg-black/30 backdrop-blur-lg sticky top-4 z-50 mx-4 rounded-xl border border-white/10 shadow-sm">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div id="logo" class="flex items-center space-x-3 h-10">
                     <img src="./assets/logo.png" alt="JNeri Logo" class="w-50 h-auto">
                 </div>
-                <nav>
-                    <ul class="flex space-x-4">
-                        <li><a href="index.html" class="text-gray-600 hover:text-gray-800 lg:text-lg">Home</a></li>
-                        <li><a href="#contact" class="text-gray-600 hover:text-gray-800 lg:text-lg">Contact</a></li>
+                <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md hover:bg-white/5" aria-label="Toggle menu">
+                    <svg class="w-6 h-6 text-slate-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <nav class="hidden lg:block">
+                    <ul class="flex space-x-6 text-sm font-medium">
+                        <li><a href="index.html" class="text-slate-100 hover:text-white">Home</a></li>
+                        <li><a href="#contact" class="text-slate-100 hover:text-white">Contact</a></li>
                     </ul>
                 </nav>
             </div>
-        </header>
+            <div id="mobile-menu" class="lg:hidden hidden px-4 pb-4">
+                <ul class="flex flex-col space-y-2">
+                    <li><a href="index.html" class="text-slate-100 block">Home</a></li>
+                    <li><a href="#contact" class="text-slate-100 block">Contact</a></li>
+                </ul>
+            </div>
+        </header> 
 
         <!-- Main Content Section -->
     <main>
 
         <section id="all-projects-container">
             <div class="container mx-auto px-5 py-10 max-w-8xl mb-10">
-                <h2 class="text-4xl font-bold text-gray-800 mb-6 text-center lg:text-5xl">My Projects</h2>
-                <h2 class="text-lg text-gray-800 mb-6 text-center lg:text-xl">A showcase of the web applications, systems, and creative builds I’ve developed combining functionality, design, and real-world impact.</h2>
+                <h2 class="text-4xl font-bold text-slate-100 mb-6 text-center lg:text-5xl">My Projects</h2>
+                <h2 class="text-lg text-slate-200 mb-6 text-center lg:text-xl">A showcase of the web applications, systems, and creative builds I’ve developed combining functionality, design, and real-world impact.</h2> 
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
                     <!-- Project 1 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <img src="./assets/real-estate.png" alt="real-estate project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Real-Estate Full Stack Website</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A modern real-estate platform that lets users browse, buy, and sell properties with ease. It features user authentication, contact forms for sellers, and a smooth, responsive interface built for a seamless home-search experience. <i>Not yet Deployed.</i></p>
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
+                        <img src="./assets/real-estate.png" alt="real-estate project" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Real-Estate Full Stack Website</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A modern real-estate platform that lets users browse, buy, and sell properties with ease. It features user authentication, contact forms for sellers, and a smooth, responsive interface built for a seamless home-search experience. <i>Not yet Deployed.</i></p> 
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -55,15 +83,15 @@
                                 <i class="devicon-javascript-plain colored text-3xl"></i>
                             </div>
                         </div>
-                        <a href="https://github.com/Xylvie/Real-Estate-Photos/tree/main" target="_blank" class="text-blue-500 hover:underline lg:text-lg">View Photo</a>
-                    </div>
+                        <a href="https://github.com/Xylvie/Real-Estate-Photos/tree/main" target="_blank" class="text-indigo-300 hover:underline lg:text-lg">View Photo</a>
+                    </div> 
                     <!-- Project 2 -->
-                     <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <img src="./assets/im-dashboard2.png" alt="real-estate project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Inventory Management System</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A streamlined inventory management system that allows users to add, track, and update product stocks in real time. Designed for simplicity and efficiency to help businesses stay organized and in control of their inventory. <i>Not yet Deployed.</i></p>
+                     <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
+                        <img src="./assets/im-dashboard2.png" alt="real-estate project" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Inventory Management System</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A streamlined inventory management system that allows users to add, track, and update product stocks in real time. Designed for simplicity and efficiency to help businesses stay organized and in control of their inventory. <i>Not yet Deployed.</i></p> 
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -81,12 +109,12 @@
                     </div>
 
                     <!-- Project 3 -->
-                     <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <img src="./assets/ecom-dash4.png" alt="real-estate project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">E-commerce Website</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A modern e-commerce website that allows users to browse products, manage their cart, and securely place orders. Built with responsive design and a smooth checkout flow for an effortless shopping experience. <i>Not yet Deployed.</i></p>
+                     <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
+                        <img src="./assets/ecom-dash4.png" alt="real-estate project" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">E-commerce Website</h4> 
+                        <p class="text-slate-200 mb-4 lg:text-lg">A modern e-commerce website that allows users to browse products, manage their cart, and securely place orders. Built with responsive design and a smooth checkout flow for an effortless shopping experience. <i>Not yet Deployed.</i></p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -104,12 +132,12 @@
                     </div>
 
                     <!-- Project 4 -->
-                     <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <img src="./assets/lead2.png" alt="real-estate project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Lead Magnet Website + Admin</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A lead magnet website prototype designed to capture and manage potential customer sign-ups. Includes an admin dashboard with lead analytics and a CSV export feature for streamlined data management. <i>Not yet Deployed.</i></p>
+                     <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
+                        <img src="./assets/lead2.png" alt="real-estate project" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Lead Magnet Website + Admin</h4> 
+                        <p class="text-slate-200 mb-4 lg:text-lg">A lead magnet website prototype designed to capture and manage potential customer sign-ups. Includes an admin dashboard with lead analytics and a CSV export feature for streamlined data management. <i>Not yet Deployed.</i></p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -126,24 +154,24 @@
                         <a href="https://github.com/Xylvie/lead-photos/tree/main" target="_blank" class="text-blue-500 hover:underline lg:text-lg">View Photo</a>
                     </div>
 
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <img src="./assets/thinkific_automation.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Thinkific Progress Report Automation (Python)</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">Developed a Python automation that processes exported Thinkific progress reports, parses the uploaded data, and automatically updates a centralized reporting sheet. The solution reduces manual work and ensures accurate, up-to-date course progress tracking.</p>
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
+                        <img src="./assets/thinkific_automation.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Thinkific Progress Report Automation (Python)</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">Developed a Python automation that processes exported Thinkific progress reports, parses the uploaded data, and automatically updates a centralized reporting sheet. The solution reduces manual work and ensures accurate, up-to-date course progress tracking.</p> 
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-python-plain colored text-3xl"></i>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/photobooth.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Photo Booth Application (Python)</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">Developed a Python photo booth application that automatically captures six photos at three-second intervals after starting a session, then displays the images for preview and editing. The project includes basic photo filters and a simple interface to simulate a real photo booth experience.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Photo Booth Application (Python)</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">Developed a Python photo booth application that automatically captures six photos at three-second intervals after starting a session, then displays the images for preview and editing. The project includes basic photo filters and a simple interface to simulate a real photo booth experience.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-python-plain colored text-3xl"></i>
                             </div>
@@ -151,12 +179,12 @@
                     </div>
 
                     <!-- Project 5 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/shopify.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Custom Shopify Store Development</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">Developed a custom Shopify store for a client, implementing unique design elements and tailored functionalities to enhance user experience and drive sales. The project included theme customization, app integrations, and responsive design to ensure optimal performance across all devices.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Custom Shopify Store Development</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">Developed a custom Shopify store for a client, implementing unique design elements and tailored functionalities to enhance user experience and drive sales. The project included theme customization, app integrations, and responsive design to ensure optimal performance across all devices.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -170,12 +198,12 @@
                         <a href="https://tkrqve-8e.myshopify.com/" target="_blank" class="text-blue-500 hover:underline lg:text-lg">View Site</a>
                     </div>
 
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/techhub.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">TechHub – Shopify Dev Store (Gadgets & Electronics)</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">Developed a custom Shopify dev store for a gadget and electronics brand, focusing on clean layouts, category-driven navigation, and feature-focused product presentation. The project involved building reusable theme sections, customizing Liquid templates, and ensuring a responsive, user-friendly experience across devices.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">TechHub – Shopify Dev Store (Gadgets & Electronics)</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">Developed a custom Shopify dev store for a gadget and electronics brand, focusing on clean layouts, category-driven navigation, and feature-focused product presentation. The project involved building reusable theme sections, customizing Liquid templates, and ensuring a responsive, user-friendly experience across devices.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -189,12 +217,12 @@
                         <a href="https://tkrqve-8e.myshopify.com/" target="_blank" class="text-blue-500 hover:underline lg:text-lg">View Site</a>
                     </div>
 
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/xyfitness.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Xyfitness – Shopify Dev Store (Fitness & Supplements)</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">Created a custom Shopify dev store for a fitness and supplements brand, designed to highlight product benefits, trust elements, and conversion-focused content. The project included theme customization, schema-driven sections, and responsive layouts optimized for wellness and supplement products.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Xyfitness – Shopify Dev Store (Fitness & Supplements)</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">Created a custom Shopify dev store for a fitness and supplements brand, designed to highlight product benefits, trust elements, and conversion-focused content. The project included theme customization, schema-driven sections, and responsive layouts optimized for wellness and supplement products.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -208,12 +236,12 @@
                         <a href="https://tkrqve-8e.myshopify.com/" target="_blank" class="text-blue-500 hover:underline lg:text-lg">View Site</a>
                     </div>
 
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/xyfitness.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Xyfitness – Custom Shopify Theme (Built from Scratch)</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">Built a custom Shopify theme from scratch for fitness and supplement stores, featuring JSON templates and schema-driven sections that allow full customization from page to block. The theme is designed to support product education, trust-focused layouts, and responsive performance across all devices.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Xyfitness – Custom Shopify Theme (Built from Scratch)</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">Built a custom Shopify theme from scratch for fitness and supplement stores, featuring JSON templates and schema-driven sections that allow full customization from page to block. The theme is designed to support product education, trust-focused layouts, and responsive performance across all devices.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -228,12 +256,12 @@
                     </div>
 
                     <!-- Project 6 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/thediv.jfif" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Diversified Internal Training Site</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A fully branded internal training site built on Thinkific, integrating custom course structures, prerequisite lessons, and user progress analytics. Developed to streamline internal learning and ensure consistent team skill development.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Diversified Internal Training Site</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A fully branded internal training site built on Thinkific, integrating custom course structures, prerequisite lessons, and user progress analytics. Developed to streamline internal learning and ensure consistent team skill development.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -248,12 +276,12 @@
                     </div>
 
                     <!-- Project 7 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/valuation.jfif" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Valuation Training Landing Pages</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A Thinkific-based valuation training site customized for a smoother and more professional learning experience. I enhanced the page layouts, branding, and user navigation to align with the client’s training goals and visual identity.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Valuation Training Landing Pages</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A Thinkific-based valuation training site customized for a smoother and more professional learning experience. I enhanced the page layouts, branding, and user navigation to align with the client’s training goals and visual identity.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -268,12 +296,12 @@
                     </div>
 
                     <!-- Thinkific Project 3 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/yamadacapital.thinkific.com_2.png" alt="Thinkific Project 3" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Yamada Capital Thinkific Site</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A fully branded Thinkific site for Yamada Capital, featuring a modern design and seamless user experience. The site includes custom course modules, interactive learning tools, and integrated analytics to track user engagement and progress.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Yamada Capital Thinkific Site</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A fully branded Thinkific site for Yamada Capital, featuring a modern design and seamless user experience. The site includes custom course modules, interactive learning tools, and integrated analytics to track user engagement and progress.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -288,12 +316,12 @@
                     </div>
 
                     <!-- Project 8 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/portoflio.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Project Portfolio</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A responsive portfolio showcasing my work as a Full-Stack Web Developer. Built with HTML, Tailwind CSS, and JavaScript, it highlights my projects, skills, and contact info in a clean, modern layout.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Project Portfolio</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A responsive portfolio showcasing my work as a Full-Stack Web Developer. Built with HTML, Tailwind CSS, and JavaScript, it highlights my projects, skills, and contact info in a clean, modern layout.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -311,12 +339,12 @@
                     </div>
 
                     <!-- Project 9 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/ecommerce.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">E-commerce Landing Page</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A fully responsive product page featuring interactive item cards, dynamic add-to-cart functionality, and a clean, user-friendly layout designed to enhance the shopping experience across all devices.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">E-commerce Landing Page</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A fully responsive product page featuring interactive item cards, dynamic add-to-cart functionality, and a clean, user-friendly layout designed to enhance the shopping experience across all devices.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -334,12 +362,12 @@
                     </div>
 
                     <!-- Project 10 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/moviefinder.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Movie Finder App</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A responsive movie finder app that retrieves real-time movie details from an external API based on user searches. Designed with a clean interface and intuitive search functionality to make discovering films fast and engaging.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Movie Finder App</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A responsive movie finder app that retrieves real-time movie details from an external API based on user searches. Designed with a clean interface and intuitive search functionality to make discovering films fast and engaging.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -357,12 +385,12 @@
                     </div>
 
                     <!-- Project 11 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/recipe finder.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Recipe Finder App</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A responsive recipe finder app that retrieves meal details and ingredients from an external API based on user searches. Built with a clean interface and intuitive search feature to make discovering new recipes simple and enjoyable.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Recipe Finder App</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A responsive recipe finder app that retrieves meal details and ingredients from an external API based on user searches. Built with a clean interface and intuitive search feature to make discovering new recipes simple and enjoyable.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -380,12 +408,12 @@
                     </div>
 
                     <!-- Project 12 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                        <img src="./assets/weatherapp.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Weather App</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A responsive weather app that provides real-time weather updates for any city using the OpenWeatherMap API. Designed with a clean interface and intuitive search functionality for quick, accurate, and user-friendly forecasts.</p>
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
+                        <img src="./assets/weatherapp.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded-lg">
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Weather App</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A responsive weather app that provides real-time weather updates for any city using the OpenWeatherMap API. Designed with a clean interface and intuitive search functionality for quick, accurate, and user-friendly forecasts.</p> 
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -403,12 +431,12 @@
                     </div>
 
                     <!-- Project 13 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/quizapp.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Quiz App</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">An interactive quiz app that lets users answer multiple-choice questions and get instant feedback.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Quiz App</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">An interactive quiz app that lets users answer multiple-choice questions and get instant feedback.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -423,12 +451,12 @@
                     </div>
 
                     <!-- Project 14 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/to-do-list.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">To-Do-List App</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A responsive to-do list app that lets users add and remove tasks effortlessly. Tasks are saved in localStorage, ensuring all to-dos remain intact even after refreshing the page.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">To-Do-List App</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A responsive to-do list app that lets users add and remove tasks effortlessly. Tasks are saved in localStorage, ensuring all to-dos remain intact even after refreshing the page.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -443,12 +471,12 @@
                     </div>
 
                     <!-- Project 15 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/calculator.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Calculator App</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A clean and responsive JavaScript calculator that performs basic arithmetic operations. Designed with a simple interface for quick and efficient calculations across all devices.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Calculator App</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A clean and responsive JavaScript calculator that performs basic arithmetic operations. Designed with a simple interface for quick and efficient calculations across all devices.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -463,12 +491,12 @@
                     </div>
             
                     <!-- Project 16 -->
-                    <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="glass-card p-6 rounded-xl hover:shadow-xl transform hover:-translate-y-2 fade-up">
                         <img src="./assets/counter.png" alt="Shopify Project" class="w-full h-48 object-cover mb-4 rounded">
-                        <h4 class="text-xl font-bold text-gray-800 mb-2 lg:text-2xl">Sales Counter</h4>
-                        <p class="text-gray-600 mb-4 lg:text-lg">A responsive sales tracker app that logs transactions with timestamps, automatically totals daily sales, and stores data in localStorage for persistence. The system resets automatically at midnight to keep records organized and up to date.</p>
+                        <h4 class="text-xl font-bold text-slate-100 mb-2 lg:text-2xl">Sales Counter</h4>
+                        <p class="text-slate-200 mb-4 lg:text-lg">A responsive sales tracker app that logs transactions with timestamps, automatically totals daily sales, and stores data in localStorage for persistence. The system resets automatically at midnight to keep records organized and up to date.</p>
                         <div id="tech-used" class="flex flex-row gap-4 mb-4">
-                            <p class="text-gray-600 mb-4 lg:text-lg">Tech used: </p>
+                            <p class="text-slate-200 mb-4 lg:text-lg">Tech used: </p>
                             <div class="flex flex-col items-center">
                                 <i class="devicon-html5-plain colored text-3xl"></i>
                             </div>
@@ -486,11 +514,11 @@
 
         <section id="contact" class="container mx-auto px-5 py-10 max-w-8xl mb-10">
             
-            <div id="container" class="container mx-auto px-5 py-10 max-w-8xl mt-10 flex flex-col lg:flex-row lg:space-x-10 shadow-lg bg-white rounded-lg">
+            <div id="container" class="container mx-auto px-5 py-10 max-w-8xl mt-10 flex flex-col lg:flex-row lg:space-x-10 shadow-lg bg-black/20 backdrop-blur-md rounded-xl fade-up">
 
                 <div id="contact-information">
-                    <h3 class="text-3xl font-bold text-gray-800 mb-6 text-center">Contact Information</h3>
-                    <p class="text-gray-600 mb-4 lg:text-lg text-center">Feel free to reach out to me for any inquiries, project discussions, or collaboration opportunities. I'm here to help and would love to hear from you!</p>
+                    <h3 class="text-3xl font-bold text-slate-100 mb-6 text-center">Contact Information</h3>
+                    <p class="text-slate-200 mb-4 lg:text-lg text-center">Feel free to reach out to me for any inquiries, project discussions, or collaboration opportunities. I'm here to help and would love to hear from you!</p> 
                     <div class="container mx-auto px-5 py-10 max-w-8xl mb-10">
                         <ul class="text-gray-600 lg:text-lg">
                             <li class="mb-2"><strong>Email:</strong>
@@ -512,18 +540,18 @@
                     <form action="https://formspree.io/f/xvgvpdpn" method="POST">
                         <div class="mb-4">
                             <label for="name" class="block text-gray-700 font-bold mb-2 lg:text-lg">Name</label>
-                            <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <input type="text" id="name" name="name" class="w-full px-3 py-2 bg-transparent border border-white/20 rounded-lg text-slate-100 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-400" required>
                         </div>
                         <div class="mb-4">
                             <label for="email" class="block text-gray-700 font-bold mb-2 lg:text-lg">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <input type="email" id="email" name="email" class="w-full px-3 py-2 bg-transparent border border-white/20 rounded-lg text-slate-100 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-400" required>
                         </div>
                         <div class="mb-4">
                             <label for="message" class="block text-gray-700 font-bold mb-2 lg:text-lg">Message</label>
-                            <textarea id="message" name="message" rows="5" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                            <textarea id="message" name="message" rows="5" class="w-full px-3 py-2 bg-transparent border border-white/20 rounded-lg text-slate-100 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-400" required></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600">Send Message</button>
+                            <button type="submit" class="bg-gradient-to-r from-indigo-500 to-blue-600 text-white px-6 py-3 rounded-full shadow-md hover:shadow-2xl">Send Message</button>
                         </div>
                     </form>
                 </div>
@@ -533,11 +561,32 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-white shadow mt-auto">
-        <div class="container mx-auto px-4 py-6 text-center">
-            <p class="text-gray-600 lg:text-lg">&copy; 2024 JNeri.dev. All rights reserved.</p>
+    <footer class="bg-transparent mt-auto py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm">&copy; 2024 JNeri.dev. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+      // Reveal on scroll
+      (function(){
+        const io = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{
+            if(e.isIntersecting) e.target.classList.add('in-view');
+          });
+        },{threshold:0.12});
+        document.querySelectorAll('.fade-up').forEach(el=>{
+          io.observe(el);
+        });
+      })();
+
+      // Mobile menu
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      if(btn && menu){
+        btn.addEventListener('click', ()=> menu.classList.toggle('hidden'));
+      }
+    </script>
     
 </body>
 </html>
